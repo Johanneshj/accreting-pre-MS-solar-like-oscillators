@@ -1,0 +1,35 @@
+#### matplotlibrc file for prettier plots 
+#### Author: Earl Bellinger ( bellinger@phys.au.dk ) 
+#### Max Planck Institute for Astrophysics, Garching, Germany 
+#### Stellar Astrophysics Centre, Aarhus University, Denmark 
+
+xtick.labelsize : 14
+ytick.labelsize : 14
+font.size : 14
+figure.constrained_layout.use : True
+#figure.figsize : 6,4
+#figure.dpi : 200
+axes.titlesize : 20
+axes.labelsize : 16
+lines.linewidth : 2
+lines.markersize : 5
+legend.fontsize : 14
+mathtext.fontset : stix
+font.family : STIXGeneral
+axes.labelpad : 4
+axes.titlepad : 4
+
+text.latex.preamble : r"\usepackage{amsmath}\usepackage{esint}"
+axes.linewidth : 1.5
+ytick.major.width : 1.5
+ytick.minor.width : 1.5
+xtick.major.width : 1.5
+xtick.minor.width : 1.5
+
+ytick.major.size : 5
+ytick.minor.size : 3
+xtick.major.size : 5
+xtick.minor.size : 3
+
+ytick.minor.visible : True
+xtick.minor.visible : True

@@ -1,0 +1,134 @@
+! inlist to evolve a 15 solar mass star
+
+! For the sake of future readers of this file (yourself included),
+! ONLY include the controls you are actually using.  DO NOT include
+! all of the other controls that simply have their default values.
+
+&star_job
+
+  ! begin with a pre-main sequence model
+    create_pre_main_sequence_model = .true.
+    pre_ms_relax_to_start_radiative_core = .false.
+    pre_ms_relax_num_steps = 100
+
+  ! save a model at the end of the run
+  	save_model_when_terminate = .true.
+  	save_model_filename = "initial_models/solar_z_amlt_1.7"
+
+  ! display on-screen plots
+    pgstar_flag = .true.
+
+
+! change form lnd to lnPgas
+	!change_lnPgas_flag = .true.
+	!new_lnPgas_flag = .true.
+
+
+
+! set initial composition and nuclear reaction network
+  	set_uniform_initial_composition = .true.
+  	initial_zfracs = 8 ! GS98_zfracs = 3   
+  	!initial_h1 = 0.705451639385026
+  	!initial_h2 = 0.000014109314974                     !set in run_star_extras
+  	!initial_he3 = 0.0000233467035255
+  	!initial_he4 = 0.2746437535964745
+
+	change_net = .true.
+	new_net_name = 'pp_and_cno_extras.net' ! 'basic.net' 
+	change_initial_net = .true.
+	set_initial_age = .true.
+	set_initial_model_number = .true.
+	set_initial_cumulative_energy_error = .true.
+
+
+
+! display on-screen plots
+	pgstar_flag = .true.
+	pause_before_terminate = .true.
+
+! define method to calculate initial model
+  	create_pre_main_sequence_model = .true.
+  	pre_ms_T_c = 5e5 ! initial center temperature (below 1d6)
+!pre_ms_guess_rho_c = 10
+  	relax_mass_scale = .true.
+  	dlgm_per_step = 1d-3 ! log10(delta M/Msun/step)
+  	!new_mass = 1.0d-2 ! 10 Mjupiter in Msun units
+	new_mass = 1.0d-2
+  	change_mass_years_for_dt = 0.1
+
+	change_v_flag = .true.
+	new_v_flag = .true.
+
+	!change_conv_vel_flag = .true.
+	!new_conv_vel_flag = .true.
+
+/ !end of star_job namelist
+
+&eos
+  ! eos options
+  ! see eos/defaults/eos.defaults
+
+/ ! end of eos namelist
+
+
+&kap
+  ! kap options
+  ! see kap/defaults/kap.defaults
+  use_Type2_opacities = .true.
+  !Zbase = 0.01847
+
+
+! set opacity tables
+	kap_file_prefix = 'OP_a09_nans_removed_by_hand'
+	!kappa_lowT_prefix = 'lowT_Freedman11'
+
+/ ! end of kap namelist
+
+
+&controls
+
+  
+! set initial mass
+  	initial_mass = 0.03 ! 0.03
+
+! Atmopheres controls
+
+
+ 	!atm_option = 'table'
+   ! 	atm_table = 'tau_100'
+ 	atm_option = 'T_tau'
+    	atm_T_tau_relation = 'Eddington'
+  !  	atm_T_tau_opacity = 'varying'
+	!atm_T_tau_errtol = 1d-9
+
+	mesh_delta_coeff = 0.5
+	!max_dq = 1d-4
+	max_allowed_nz = 1000000
+	R_function_weight = 1d2
+	T_function2_weight = 10
+	T_function1_weight = 250
+
+	! initial metalicity
+	initial_z = 0.018 ! 0.028
+	initial_y = 0.275
+	x_ctrl(1) = 20	!20		! deuterium abundance in ppm	
+	x_ctrl(2) = 85			! he3 abundance in ppm	
+
+	! radius control
+	x_ctrl(3) = 1.5		! final radius
+
+! mixing controls
+
+	set_min_D_mix = .true.
+	min_D_mix = 0d0
+	mixing_length_alpha = 1.7 !1.7749962777 !2.2   
+
+! convective premixing
+	use_Ledoux_criterion = .true.
+	!do_conv_premix = .true.
+	!steps_before_use_gold_tolerances = 10000
+	!convergence_ignore_equL_residuals = .true.
+	!report_solver_progress = .true.
+	max_resid_jump_limit = 1d99
+
+/ ! end of controls namelist

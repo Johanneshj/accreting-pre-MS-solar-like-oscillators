@@ -280,7 +280,7 @@
             Write( history_num, '(i2)')  s% x_integer_ctrl(1)
          end if
 
-         intermediate_step = '../../ext_50myr/' // history_num
+         intermediate_step = '../ext_50myr/' // history_num
          acc_table% filename = intermediate_step // '_ex50.dat'
 
          write(*,*) acc_table % filename

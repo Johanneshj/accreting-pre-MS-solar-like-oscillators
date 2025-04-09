@@ -4,7 +4,7 @@
 
 &star_job
 
-  load_model_filename = '../../initial_model/initial_models/solar_z_amlt_1.7'
+  load_model_filename = '../initial_model/initial_models/solar_z_amlt_1.7'
 
   / !end of star_job namelist
 

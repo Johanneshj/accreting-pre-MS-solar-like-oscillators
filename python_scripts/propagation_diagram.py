@@ -1,3 +1,6 @@
+### Inspired by
+### https://github.com/earlbellinger/mesa-gyre-tutorial-2022/blob/main/tutorial.ipynb
+
 import os
 import matplotlib as plt
 import numpy as np

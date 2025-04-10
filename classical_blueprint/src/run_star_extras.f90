@@ -121,17 +121,13 @@
 
             s% xtra(4) = 10**(s% log_surface_radius)
 
-            if ( ABS( floor(s% xtra(4)*100) - floor(s% xtra_old(4)*100) ) .ne. 0 ) then
-               write(*,*) "Radius changed by 1% on the pre-ms --> Saving profile"
-               s% need_to_save_profiles_now = .true.
-            end if 
+            if ( s% xtra(3) .ge. 0.95*(s% job% initial_h1) ) then
+               if ( ABS( floor( (s% xtra(2))/1e6 ) - floor( (s% xtra_old(2))/1e6 ) ) .ne. 0 ) then
+                  write(*,*) "Age changed by 1 Myr --> Saving profile"
+                  s% need_to_save_profiles_now = .true.
+               end if
+            end if
 
-            !if ( s% xtra(3) .le. 0.01*(s% job% initial_h1) ) then
-            !   if (s% log_surface_luminosity .ge. 2) then
-            !      extras_check_model = terminate
-            !      write(*, *) 'Have reached log(L)=2'
-            !   end if
-            !end if
             if ( s% xtra(3) .le. 0.95*(s% job% initial_h1) ) then
                extras_check_model = terminate
                write(*, *) 'pre-ms has ended'

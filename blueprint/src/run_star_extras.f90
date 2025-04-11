@@ -265,7 +265,7 @@
          integer, intent(out) :: ierr
          integer :: nlines, io, i
          character(2) :: history_num
-         character(len = 18) :: intermediate_step
+         character(len = 15) :: intermediate_step
          type (star_info), pointer :: s
          real(kind=8) :: offset
          ierr = 0

@@ -172,11 +172,13 @@
 	            s% use_gradT_actual_vs_gradT_MLT_for_T_gradient_eqn = .false.
                s% eps_mdot_factor = 1.0
 	            s% eps_mdot_leak_frac_factor = 1.0
+               s% delta_lgRho_cntr_hard_limit = -1
             else
                s% use_dPrad_dm_form_of_T_gradient_eqn = .true.
 	            s% use_gradT_actual_vs_gradT_MLT_for_T_gradient_eqn = .true.
                s% eps_mdot_factor = 0.0
 	            s% eps_mdot_leak_frac_factor = 0.0
+               s% delta_lgRho_cntr_hard_limit = 2.5d-3 
             end if
             
             !if (s% mstar_dot/Msun*secyer > 5d-5) then

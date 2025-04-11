@@ -13,9 +13,9 @@ def HR_diagram(models_folder,
     
     model_folder = os.path.join(models_folder, model_name)
     
-    Teff = np.genfromtxt(os.path.join(model_folder, f"{model_folder}_value_log_Teff.txt"))
-    Lum = np.genfromtxt(os.path.join(model_folder, f"{model_folder}_value_log_L.txt"))
-    center_h1 = np.genfromtxt(os.path.join(model_folder, f"{model_folder}_value_center_h1.txt"))
+    Teff = np.genfromtxt(os.path.join(model_folder, f"{model_name}_value_log_Teff.txt"))
+    Lum = np.genfromtxt(os.path.join(model_folder, f"{model_name}_value_log_L.txt"))
+    center_h1 = np.genfromtxt(os.path.join(model_folder, f"{model_name}_value_center_h1.txt"))
 
     pre_ms_mask = (center_h1 > 0.999*max(center_h1))
 
